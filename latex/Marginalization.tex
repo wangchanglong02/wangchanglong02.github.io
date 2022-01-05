@@ -1,0 +1,39 @@
+\documentclass[a4pape,oneside,10pt]{article}
+\usepackage{graphicx}
+\usepackage[level]{datetime}
+% \usepackage{CJK}
+\usepackage[UTF8]{ctex}
+\usepackage{amsmath}
+% \newdateformat{ukdate}{\THEYEAR.\monthname[\THEMONTH].\ordinaldate{\THEDAY}}
+\newdateformat{ukdate}{\THEYEAR.\THEMONTH.\THEDAY}
+
+\title{VINS中的边缘化}
+\author{Wang Changlong}
+\date{\ukdate\today}
+\maketitle
+\begin{document}
+%section
+\section{什么是边缘化}
+边缘化，总结为一句话就是从联合概率分布中求边际概率。即
+\begin{equation}
+    P(X=x) = \int_{ -\infty}^{\infty}  P(X=x, Y=y) dy
+\end{equation}
+具体到vins系统中，为了维护变量的维度可控以达到实时性，我们常常维护一个固定长度的滑窗。当窗口进行滑动时，某些旧的变量需要被舍弃，
+这个舍弃的过程就牵扯到了边缘化。
+
+考虑一个长度为4的变量窗口，在$t=2$的时刻，$X=[x_0, x_1, x_2]$。$t=3$时来一个新的变量$x_3$，我们把$x_3$加入到变量窗口里，
+并对变量$X_{old}=[x_0, x_1, x_2, x_3]$进行估计，这时我们得到了关于变量$x_i, i=1,2,3,4$的联合概率分布。而后，我们舍弃掉变量$x_0$，
+而保留关于变量$X_{new}=[x_1, x_2, x_3]$的联合概率分布，这个舍弃就是通过边缘化来实现的。
+\begin{equation}
+\begin{aligned}
+    P(X_{new}=x_{new}) 
+    &= \int_{ -\infty}^{\infty}  P(X_{old}=[x_{new}, \tilde{x}_{0}]) d{\tilde{x}_0} \\
+    &= \int_{ -\infty}^{\infty}  P(X_{new}=x_{new}, x_0=\tilde{x}_{0}) d{\tilde{x}_0}
+\end{aligned}
+\end{equation}
+
+\subsection{Second section}
+test Second section
+\subsubsection{Third section}
+test Third section
+\end{document}

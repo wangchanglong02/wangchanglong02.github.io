@@ -25,7 +25,18 @@
 				$body.removeClass('is-preload');
 			}, 100);
 		});
-
+	// 折叠与收起
+		var btn = $('#btn')
+		var spread = $('#spread')
+		btn.click(function () {
+			spread.slideToggle()
+			// if(this.innerHTML == '...') {
+			// 	this.innerHTML = '.'
+			// }
+			// if(this.innerHTML == '.') {
+			// 	this.innerHTML = '...'
+			// }
+		})
 	// Nav.
 		var $nav_a = $nav.find('a');
 

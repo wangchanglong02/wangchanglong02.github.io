@@ -13,6 +13,21 @@
 		<!-- <meta charset="utf-8"> -->
 		<meta name="viewport" content="width=device-width">
 		<!-- <title>MathJax example</title> -->
+		<script>MathJax = {
+			tex:{
+					inlineMath: [['$', '$'], ['\\(', '\\)']],
+					tags: 'ams'
+				},
+			svg:{
+					fontCache: 'global'
+				},
+            options:{enableMenu: false},
+            renderActions: {
+                    addMenu: [0, '', '']
+                },
+            loader: {load: ['ui/lazy']}
+		};
+		</script>
 		<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 		<script id="MathJax-script" async
 				src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
@@ -86,11 +101,15 @@
 								<h2>理论学习</h2>
 							</header>
 
-							<!-- <p>放一些零散的知识的总结</p> -->
-							<p>
-								When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are
-								\[x = {-b \pm \sqrt{b^2-4ac} \over 2a}.\]
-							  </p>
+							<!-- <details>
+								<summary>...</summary> -->
+								<a href="pages/therory/marginalization.html">
+									<p>1.VINS中的边缘化</p>
+								</a>
+								<a href="pages/therory/bayesfilter.html">
+									<p>2.贝叶斯滤波的前世今生</p>
+								</a>
+								<!-- </details> -->
 
 						</div>
 					</section>
@@ -98,15 +117,10 @@
 				<!-- About Me -->
 					<section id="paper" class="three">
 						<div class="container">
-
 							<header>
 								<h2>论文阅读</h2>
 							</header>
-
-							<!-- <a href="#" class="image featured"><img src="images/pic08.jpg" alt="" /></a> -->
-
 							<p>论文阅读的总结放在这里.</p>
-
 						</div>
 					</section>
 
@@ -126,14 +140,14 @@
 			</div>
 
 		<!-- Footer -->
-			<div id="footer">
+			<!-- <div id="footer"> -->
 
 				<!-- Copyright -->
-					<ul class="copyright">
+					<!-- <ul class="copyright">
 						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-					</ul>
+					</ul> -->
 
-			</div>
+			<!-- </div> -->
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
