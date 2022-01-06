@@ -45,7 +45,7 @@
 								<h2 class="center">VINS中的边缘化</h2>
 							</header>
 								<h3>1.什么是边缘化</h3>
-								<p style="text-indent:2em; margin-top:0em;margin-bottom:0em;font-size:1.15em;">
+								<p style="text-indent:2em; margin-top:0em;margin-bottom:0em;font-size:0.9em;">
                                     边缘化，总结为一句话就是从联合概率分布中求边际概率。即
                                     \begin{equation}
                                         P(X=x) = \int_{ -\infty}^{\infty}  P(X=x, Y=y) dy 
@@ -54,7 +54,7 @@
                                     这个舍弃的过程就牵扯到了边缘化。
                                 </p>
 
-                                <p style="text-indent:2em;margin-top:0em;margin-bottom:0em;font-size:1.15em;">
+                                <p style="text-indent:2em;margin-top:0em;margin-bottom:0em;font-size:0.9em;">
                                     考虑一个长度为4的变量窗口，
                                     在$t=2$的时刻，$X=[x_0, x_1, x_2]$。$t=3$时来一个新的变量$x_3$，我们把$x_3$加入到变量窗口里，
                                     并对变量$X_{old}=[x_0, x_1, x_2, x_3]$进行估计，这时我们得到了关于变量$x_i, i=1,2,3,4$的联合概率分布。
@@ -70,7 +70,7 @@
                                 </p>
 
                                 <h3>2.协方差矩阵、信息矩阵和边缘化</h3>
-								<p style="text-indent:2em; margin-top:0em;margin-bottom:0em;font-size:1.15em;">
+								<p style="text-indent:2em; margin-top:0em;margin-bottom:0em;font-size:0.9em;">
 									假设变量$(x,y)$的概率密度函数符合均值$\mu$，协方差$\Sigma$的高斯分布，具有如下的矩阵形式：
 									\begin{equation}
 									p(x,y) = \mathcal{N} (
@@ -144,7 +144,7 @@
 									\end{split}
 									\end{equation}
 									
-								<p style="text-indent:2em; margin-top:0em;margin-bottom:0em;font-size:1.15em;">
+								<p style="text-indent:2em; margin-top:0em;margin-bottom:0em;font-size:0.9em;">
 									我们知道，对于上述高斯分布，我们可以采用舒尔补进行分解，得到边缘概率密度函数和条件概率密度函数。
 									\begin{equation}
 									\label{schur}
@@ -158,13 +158,12 @@
 									\end{equation}
 									这时我们对照公式Eq(\ref{schur})和公式Eq(\ref{info})，会发现条件概率$P(x|y)$的协方差就是$\varLambda_{xx}^{-1}$！也就是说，我们如果直接从信息矩阵中取块，得到的是变量的条件概率分布的信息矩阵\cite{pa}。
 								</p>
-								<p style="text-indent:2em; margin-top:0em;margin-bottom:0em;font-size:1.15em;">
+								<p style="text-indent:2em; margin-top:0em;margin-bottom:0em;font-size:0.9em;">
 									这引出了一个非常有趣的现象：边际概率对于协方差矩阵的操作是很容易的，对于信息矩阵不好操作，而条件概率恰好相反。
-								</p>
 								</p>
 
 								<h3>3.边缘化的平方根方法</h3>
-								<p style="text-indent:2em; margin-top:0em;margin-bottom:0em;font-size:1.15em;">
+								<p style="text-indent:2em; margin-top:0em;margin-bottom:0em;font-size:0.9em;">
 									上节中我们得到，直接对信息矩阵进行舒尔补分解是可以实现边缘化的，这一节我们学习边缘化的平方根（Square Root）方法。
 									平方根方法的引入源自在求解非线性最小二乘问题时，信息矩阵通常是形如$H=J^TJ$来进行构造的，如高斯牛顿方法和LM方法。如果我们对$J$进行QR分解，有
 									\begin{equation}
@@ -209,11 +208,11 @@
 									对照公式Eq(\ref{info})和公式Eq(\ref{squareroot})，我们发现恰好有$\Sigma_{yy}^{-1} = P^TP$。
 									对于QR分解，我们知道，它得到的是一个正交矩阵和一个上三角矩阵的乘积，因此我们想要边缘化的子变量部分必须要放在变量向量的头部，才能直接使用上述方法进行边缘化。
 									</p>
-									<p style="text-indent:2em; margin-top:0em;margin-bottom:0em;font-size:1.15em;">
+									<p style="text-indent:2em; margin-top:0em;margin-bottom:0em;font-size:0.9em;">
 									
 									实际上，我们进行边缘化的时候并不需要真的要求出正交矩阵$\textbf{Q}$，我们的目的是将求出矩阵$\textbf{R}$，而Givens Rotation告诉我们，只需要不断地左乘Givens旋转矩阵，即可将消去矩阵$\textbf{J}$的下三角中的非零元素。
-								
 								</p>
+
 								<h3>4.参考资料</h3>
 								<ul>
 									<li style="font-size:1em">
