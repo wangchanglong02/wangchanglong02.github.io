@@ -4,9 +4,9 @@
 % \usepackage{CJK}
 \usepackage[UTF8]{ctex}
 \usepackage{amsmath}
+\usepackage{fontspec}
 % \newdateformat{ukdate}{\THEYEAR.\monthname[\THEMONTH].\ordinaldate{\THEDAY}}
 \newdateformat{ukdate}{\THEYEAR.\THEMONTH.\THEDAY}
-
 \begin{document}
 \title{VINS中的边缘化}
 \author{Wang Changlong}
@@ -117,7 +117,7 @@ p(x,y) = \mathcal{N} (
 \end{aligned}
 \end{split}
 \end{equation}
-这时我们对照公式Eq(\ref{schur})和公式Eq(\ref{info})，会发现条件概率$P(x|y)$的协方差就是$\varLambda_{xx}^{-1}$！也就是说，我们如果直接从信息矩阵中取块，得到的是变量的条件概率分布的信息矩阵\cite{pa}。
+这时我们对照公式Eq(\ref{schur})和公式Eq(\ref{info})，会发现条件概率$P(x|y)$的协方差就是$\varLambda_{xx}^{-1}$！也就是说，我们如果直接从信息矩阵中取块，得到的是变量的条件概率分布的信息矩阵。
 
 这引出了一个非常有趣的现象：边际概率对于协方差矩阵的操作是很容易的，对于信息矩阵不好操作，而条件概率恰好相反。
 
@@ -164,11 +164,21 @@ p(x,y) = \mathcal{N} (
     \end{split}
 \end{equation}
 对照公式Eq(\ref{info})和公式Eq(\ref{squareroot})，我们发现恰好有$\Sigma_{yy}^{-1} = P^TP$。
-对于QR分解，我们知道，它得到的是一个正交矩阵和一个上三角矩阵的乘积。因此我们想要边缘化的子变量部分必须要放在变量向量的头部，才能直接使用上述方法进行边缘化。
+对于QR分解，我们知道，它得到的是一个正交矩阵和一个上三角矩阵的乘积，因此我们想要边缘化的子变量部分必须要放在变量向量的头部，才能直接使用上述方法进行边缘化。
 
-实际上，我们进行边缘化的时候并不需要真的要求出正交矩阵$\textbf{Q}$，我们的目的是将求出矩阵$R$，而Givens Rotation告诉我们，只需要不断地左乘Givens旋转矩阵，即可将消去矩阵$\textbf{J}$的下三角中的非零元素。
+实际上，我们进行边缘化的时候并不需要真的要求出正交矩阵$\mathbf{Q}$，我们的目的是将求出矩阵$\mathbf{R}$，而Givens Rotation告诉我们，只需要不断地左乘Givens旋转矩阵，即可将消去矩阵$\mathbf{J}$的下三角中的非零元素。
 
-\begin{thebibliography}{99}
-        \bibitem{pa}{Walter M R ,  Eustice R M ,  Leonard J J . Exactly Sparse Extended Information Filters for Feature-based SLAM[J]. The International Journal of Robotics Research, 2007, 26(4):335-359.}
-    \end{thebibliography} 
+\section{参考资料}
+\begin{itemize}
+    \item Walter M R, Eustice R M, Leonard J J. Exactly sparse extended information filters for feature-based SLAM[J].
+     The International Journal of Robotics Research, 2007, 26(4): 335-359.
+    \item Demmel N, Schubert D, Sommer C, et al. Square Root Marginalization for Sliding-Window Bundle Adjustment[C]//
+    Proceedings of the IEEE/CVF International Conference on Computer Vision. 2021: 13260-13268.
+    \item Demmel N, Sommer C, Cremers D, et al. Square Root Bundle Adjustment for Large-Scale Reconstruction[C]//
+    Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. 2021: 11723-11732.
+    \item Barfoot T D. State estimation for robotics[J]. 2021. 
+    \item Dellaert F, Kaess M. Factor graphs for robot perception[J]. Foundations and Trends® in Robotics, 2017, 6(1-2): 1-139.
+    
+\end{itemize}
+
 \end{document}

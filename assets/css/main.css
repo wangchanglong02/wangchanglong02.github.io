@@ -84,11 +84,11 @@ input, select, textarea {
 
 	body {
 		background: #fff;
-		font-family: 'Source Sans Pro', sans-serif;
+		font-family: 'Webfont', sans-serif;
 		font-size: 19pt;
 		font-weight: 300;
 		line-height: 1.75em;
-		color: #888;
+		color: rgb(121, 120, 120);
 	}
 
 		body.is-preload *, body.is-preload *:before, body.is-preload *:after {
@@ -103,11 +103,11 @@ input, select, textarea {
 		}
 
 	input, textarea, select {
-		font-family: 'Source Sans Pro', sans-serif;
+		font-family: 'Webfont', sans-serif;
 		font-size: 19pt;
 		font-weight: 300;
 		line-height: 1.75em;
-		color: #888;
+		color: rgb(29, 28, 28);
 	}
 
 	h1, h2, h3, h4, h5, h6 {
@@ -143,7 +143,7 @@ input, select, textarea {
 
 	h3 {
 		font-size: 1.5em;
-		margin: 0 0 0.5em 0;
+		margin: 1.2em 0 1.2em 0;
 	}
 
 	header {
@@ -2287,7 +2287,7 @@ input, select, textarea {
 			}
 
 			#main > section.subsection {
-				background-color: #e8edec;
+				background-color: #ffffff;
 				text-align: left;
 				padding: 2em 0;
 			}
