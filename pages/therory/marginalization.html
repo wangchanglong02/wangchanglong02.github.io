@@ -205,12 +205,13 @@
 										\end{aligned}
 										\end{split}
 									\end{equation}
-									对照公式Eq(\ref{info})和公式Eq(\ref{squareroot})，我们发现恰好有$\Sigma_{yy}^{-1} = P^TP$。
-									对于QR分解，我们知道，它得到的是一个正交矩阵和一个上三角矩阵的乘积，因此我们想要边缘化的子变量部分必须要放在变量向量的头部，才能直接使用上述方法进行边缘化。
+									对照公式Eq(\ref{info})和公式Eq(\ref{squareroot})，我们发现恰好有$\Sigma_{yy}^{-1} = P^TP$，即取变量块对应的$\textbf{R}$的右下部分，即可实现其余变量的边缘化。
+									不过同时也要注意到，QR分解实际得到的是一个正交矩阵和一个上三角矩阵的乘积，因此我们想要边缘化的子变量部分必须要放在变量向量的头部，才能直接使用上述方法进行边缘化。
 									</p>
 									<p style="text-indent:2em; margin-top:0em;margin-bottom:0em;font-size:0.9em;">
 									
-									实际上，我们进行边缘化的时候并不需要真的要求出正交矩阵$\textbf{Q}$，我们的目的是将求出矩阵$\textbf{R}$，而Givens Rotation告诉我们，只需要不断地左乘Givens旋转矩阵，即可将消去矩阵$\textbf{J}$的下三角中的非零元素。
+									实际上，我们进行边缘化的时候并不需要真的要求出正交矩阵$\textbf{Q}$，我们的目的是将求出矩阵$\textbf{R}$，甚至是只需要构造出$\textbf{R}$中左下角的$\textbf{0}$块，即可完成边缘化。
+									而Givens Rotation告诉我们，只需要不断地左乘Givens旋转矩阵，即可将消去矩阵$\textbf{J}$的下三角中的非零元素。
 								</p>
 
 								<h3>4.参考资料</h3>
